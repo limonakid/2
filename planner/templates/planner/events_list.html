@@ -1,0 +1,21 @@
+{% extends 'planner/base.html' %}
+
+{% block title %}Список событий | EventPlanner{% endblock %}
+
+{% block content %}
+<section>
+    <h2>Список запланированных событий</h2>
+    <div class="events-grid">
+        {% for event in events %}
+            <article class="event-card">
+                <h3>{{ event.title }}</h3>
+                <p><strong>Дата:</strong> {{ event.date }}</p>
+                <p><strong>Время:</strong> {{ event.time }}</p>
+                <p><strong>Категория:</strong> {{ event.category }}</p>
+                <p><strong>Уведомление:</strong> {{ event.notification_type }}</p>
+                <p><strong>Напоминание:</strong> {{ event.reminder }}</p>
+            </article>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

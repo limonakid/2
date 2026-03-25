@@ -1,0 +1,24 @@
+{% extends 'planner/base.html' %}
+
+{% block title %}Создание события | EventPlanner{% endblock %}
+
+{% block content %}
+<section class="form-section">
+    <h2>Форма создания события</h2>
+    <p>Заполните данные события и выберите персональные настройки интерфейса и уведомлений.</p>
+
+    <form method="post" class="event-form">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-row">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                    <div class="error-text">{{ field.errors }}</div>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <button type="submit">Сохранить настройки</button>
+    </form>
+</section>
+{% endblock %}

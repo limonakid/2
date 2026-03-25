@@ -1,0 +1,39 @@
+{% extends 'planner/base.html' %}
+{% load static %}
+
+{% block title %}Главная | EventPlanner{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-text">
+        <h2>Планируйте события и управляйте уведомлениями</h2>
+        <p>
+            На этой странице можно выбрать удобный способ напоминаний, настроить тему интерфейса
+            и сохранить персональные параметры пользователя с помощью cookies.
+        </p>
+        <ul class="feature-list">
+            {% for feature in features %}
+                <li>{{ feature }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="hero-image-card">
+        <img src="{% static 'planner/img/calendar.svg' %}" alt="Иллюстрация календаря">
+    </div>
+</section>
+
+<section class="stats-grid">
+    <article class="stat-box">
+        <h3>{{ stats.active_events }}</h3>
+        <p>Активных событий</p>
+    </article>
+    <article class="stat-box">
+        <h3>{{ stats.today_reminders }}</h3>
+        <p>Напоминаний на сегодня</p>
+    </article>
+    <article class="stat-box">
+        <h3>{{ stats.favorite_channel }}</h3>
+        <p>Популярный канал уведомлений</p>
+    </article>
+</section>
+{% endblock %}
